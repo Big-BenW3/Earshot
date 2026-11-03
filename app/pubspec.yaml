@@ -1,0 +1,56 @@
+name: earshot
+description: "Earshot: an audio shelf for sermons, lectures, community podcasts and talks. Built with Dartus."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  upload_recovery:
+    path: ../packages/upload_recovery
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  dartus: ^0.4.1
+  go_router: ^17.0.0
+  http: ^1.5.0
+  sui_wallet_web:
+    path: ../packages/sui_wallet_web
+  web: ^1.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  stream_channel: ^2.1.2
+  xml: ^6.6.1
+  crypto: ^3.0.7
+  # Signs in like a wallet in the live test (already used through Dartus).
+  sui: ^0.5.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/brand/
+  fonts:
+    - family: YoungSerif
+      fonts:
+        - asset: assets/fonts/YoungSerif-Regular.ttf
+    - family: HankenGrotesk
+      fonts:
+        - asset: assets/fonts/HankenGrotesk-400.ttf
+          weight: 400
+        - asset: assets/fonts/HankenGrotesk-500.ttf
+          weight: 500
+        - asset: assets/fonts/HankenGrotesk-600.ttf
+          weight: 600
+        - asset: assets/fonts/HankenGrotesk-700.ttf
+          weight: 700
+    - family: DMMono
+      fonts:
+        - asset: assets/fonts/DMMono-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/DMMono-Medium.ttf
+          weight: 500

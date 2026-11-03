@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!--meta-->
+  <title>Earshot</title>
+  <meta name="description" content="An audio shelf for sermons, lectures, community podcasts and talks.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Earshot">
+  <meta property="og:title" content="Earshot">
+  <meta property="og:description" content="An audio shelf for sermons, lectures, community podcasts and talks.">
+  <meta property="og:image" content="icons/og-image.png">
+  <meta name="twitter:card" content="summary">
+  <!--/meta-->
+  <meta name="theme-color" content="#1E1510">
+  <meta name="color-scheme" content="dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Earshot">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    html, body { margin: 0; height: 100%; background: #1E1510; }
+    #splash {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 22px;
+      background: radial-gradient(ellipse at 20% -10%, #3A2414 0%, #1E1510 62%);
+      color: #CDB9A5; font: 500 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+      transition: opacity 240ms ease-out;
+    }
+    #splash.gone { opacity: 0; pointer-events: none; }
+    #splash img { width: 88px; height: 88px; border-radius: 20px; box-shadow: 0 10px 40px rgba(244,169,59,.18); }
+    #splash .ticks { display: flex; gap: 6px; align-items: flex-end; height: 28px; }
+    #splash .ticks i { display: block; width: 3px; height: 10px; border-radius: 2px; background: #9C8572; animation: tick 1.2s ease-in-out infinite; }
+    #splash .ticks i:nth-child(4) { background: #F4A93B; }
+    #splash .ticks i:nth-child(2) { animation-delay: .1s } #splash .ticks i:nth-child(3) { animation-delay: .2s }
+    #splash .ticks i:nth-child(4) { animation-delay: .3s } #splash .ticks i:nth-child(5) { animation-delay: .4s }
+    #splash .ticks i:nth-child(6) { animation-delay: .5s } #splash .ticks i:nth-child(7) { animation-delay: .6s }
+    @keyframes tick { 0%,100% { height: 10px } 50% { height: 26px } }
+    @media (prefers-reduced-motion: reduce) { #splash .ticks i { animation: none } }
+    noscript { color: #F6EBDD; font-family: system-ui, sans-serif; position: fixed; inset: auto 0 40px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div id="splash" role="status" aria-live="polite">
+    <img src="icons/Icon-192.png" width="88" height="88" alt="" aria-hidden="true">
+    <div class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <span>Tuning in…</span>
+  </div>
+  <noscript>Earshot needs JavaScript to play audio.</noscript>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var s = document.getElementById('splash');
+      if (!s) return;
+      s.classList.add('gone');
+      setTimeout(function () { s.remove(); }, 300);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
