@@ -15,8 +15,7 @@ ARG FLUTTER_VERSION=3.44.2
 RUN git clone --depth 1 --branch "${FLUTTER_VERSION}" \
       https://github.com/flutter/flutter.git /opt/flutter
 ENV PATH=/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:${PATH}
-RUN flutter config --no-analytics --no-cli-animations \
- && flutter precache --web
+RUN flutter config --no-analytics --no-cli-animations 
 
 WORKDIR /src
 COPY packages/sui_wallet_web/ packages/sui_wallet_web/
