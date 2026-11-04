@@ -15,9 +15,9 @@ ARG FLUTTER_VERSION=3.44.2
 RUN git clone --depth 1 --branch "${FLUTTER_VERSION}" \
       https://github.com/flutter/flutter.git /opt/flutter
 ENV PATH=/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:${PATH}
-RUN flutter config --no-analytics --no-cli-animations 
-
-WORKDIR /src
+ENV ANDROID_HOME=/opt/android-sdk
+RUN mkdir -p $ANDROID_HOME
+RUN flutter config --no-analytics --no-cli-animations --enable-web --no-enable-android --no-enable-iosWORKDIR /src
 COPY packages/sui_wallet_web/ packages/sui_wallet_web/
 COPY packages/upload_recovery/ packages/upload_recovery/
 COPY app/pubspec.yaml app/pubspec.lock app/
