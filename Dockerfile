@@ -16,6 +16,7 @@ RUN git clone --depth 1 --branch "${FLUTTER_VERSION}" \
       https://github.com/flutter/flutter.git /opt/flutter
 ENV PATH=/opt/flutter/bin:/opt/flutter/bin/cache/dart-sdk/bin:${PATH}
 ENV ANDROID_HOME=/opt/android-sdk
+ENV TAR_OPTIONS=--no-same-owner
 RUN mkdir -p $ANDROID_HOME
 RUN flutter config --no-analytics --no-cli-animations --enable-web --no-enable-android --no-enable-ios
 WORKDIR /src
